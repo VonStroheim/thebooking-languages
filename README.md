@@ -16,8 +16,25 @@ Welcome to the official repository for TheBooking's language files.
     git add .
     git commit -m "Updated [LanguageName] translation"
     git push origin main
+    ```
     
-  6. Navigate back to your forked repo on GitHub and click the "New pull request" button. Fill out the pull request template, and then submit it. We will review your changes and merge them if everything looks good.
+6. Navigate back to your forked repo on GitHub and click the "New pull request" button. Fill out the pull request template, and then submit it. We will review your changes and merge them if everything looks good.
+
+### Generate json files (optional)
+
+TheBooking is not just a PHP plugin: a portion of it is built using JavaScript. Due to WordPress's internationalization standards, certain strings in the JavaScript realm require JSON translation files. Here's how you can generate those JSON files:
+
+Prerequisites:
+- Node environment: ensure you have Node.js installed.
+- npx: this should come pre-installed with Node.js. If not, you can install it using `npm install -g npx`.
+- po2json: this is a necessary package. Install it with `npm install -g po2json`.
+
+For every .po file that you've edited or added, execute the following commands (this example uses team-booking-en_US.po):
+
+   ```
+   npx po2json ./languages/team-booking-en_US.po ./languages/team-booking-en_US-tbk-scripts.json -d team-booking -f jed1.x
+   npx po2json ./languages/team-booking-en_US.po ./languages/team-booking-en_US-tbk-backend-scripts.json -d team-booking -f jed1.x
+   ```
 
 ## Guidelines
 - Ensure your translations are clear and contextually correct.
